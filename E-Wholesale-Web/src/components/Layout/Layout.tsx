@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import style from './Navbar.module.css';
+import style from './Layout.module.css';
 
 function Layout() {
     return (
