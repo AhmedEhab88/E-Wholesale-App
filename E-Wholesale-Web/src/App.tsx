@@ -1,11 +1,11 @@
 import Layout from './components/Layout/Layout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Retailers from './components/Retailers/Retailers';
-import Inventory from './components/Inventory/Inventory';
-import Users from './components/Users/Users';
-import Home from './components/Home/Home';
-import ErrorPage from './components/ErrorPage/ErrorPage';
+import Retailers from './pages/Retailers/Retailers';
+import Inventory from './pages/Inventory/Inventory';
+import Users from './pages/Users/Users';
+import Home from './pages/Home/Home';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
     return (
