@@ -13,7 +13,7 @@ App requirements specify what the user should be able to do on the app, as well 
 7. Once an order is placed, the retailer will be notified with an email with the order details.
 8. Payments can either be: Cash on delivery, or through the web app.
 9. Payments through the app will be through Stripe. 
-10. As an admin, they should be able to view a summary of the whole system in the home page of the admin dashboard web app. Summary should include: # of items in inventory, # of users registered, # of retailers registered with the system, # of orders, total revenue generated, .
+10. As an admin, they should be able to view a summary of the whole system in the home page of the admin dashboard web app. Summary should include: # of items in inventory, # of users registered, # of retailers registered with the system, # of orders, total revenue generated.
 11. As an admin, they should be able to view all REPs on the system through the 'representatives' page with the ability to** create**, **edit**, and **delete** existing REPs.
 12. As an admin, they should be able to view the whole inventory through the 'inventory' page. It should show all the items in the system, how many are available of each item, the brand, the category, and the unit price of each item, .
 13. An admin should be able add, edit, and delete items from the system database.
