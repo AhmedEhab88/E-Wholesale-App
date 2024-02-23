@@ -1,5 +1,5 @@
 function Home() {
-    return <div>Home</div>;
+    return <h1 className="text-3xl font-bold underline text-center text-yellow-500">Home</h1>;
 }
 
 export default Home;
