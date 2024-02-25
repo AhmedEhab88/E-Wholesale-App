@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 function Layout() {
     return (
         <>
-            <nav className="flex justify-between items-center w-full mx-auto font-sans  ">
+            <nav className="flex justify-between items-center w-[97%] mx-auto font-sans">
                 <div>
                     <Link to="/" className="">
                         E-WholeSale
