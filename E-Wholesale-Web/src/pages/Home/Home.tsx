@@ -1,7 +1,10 @@
 import Summaries from '../../components/Summaries/Summaries';
 
 function Home() {
-    const items = [1, 2, 3, 4, 5, 6];
+    const items = [
+        { title: 'Revenue Generated', value: 150 },
+        { title: 'Retailers', value: 26 },
+    ];
     return (
         <div className="ml-10 mr-10 w-[90%]">
             <h1 className="text-4xl mt-10 font-bold italic text-left text-purple-400">
@@ -12,7 +15,7 @@ function Home() {
             </h3>
             <div className="flex flex-row flex-wrap justify-between items-center w-full">
                 {items.map((item) => (
-                    <Summaries />
+                    <Summaries title={item.title} value={item.value} />
                 ))}
             </div>
         </div>
