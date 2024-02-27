@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 function Layout() {
     return (
         <>
-            <nav className="flex justify-between items-center w-[97%] mx-auto font-sans">
+            <nav className="flex justify-between items-center w-[97%] mx-auto mt-2 font-sans">
                 <div>
                     <Link to="/" className="">
                         E-WholeSale
@@ -58,6 +58,22 @@ function Layout() {
             <div>
                 <Outlet />
             </div>
+
+            <footer className="w-full h-[15%] bg-purple-500 fixed left-0 bottom-0 ">
+                <div className="flex items-center justify-center h-full">
+                    <ul className="flex gap-[4vw]">
+                        <li>
+                            <h1 className="text-white text-xl">About</h1>
+                        </li>
+                        <li>
+                            <h2 className="text-white text-xl">Careers</h2>
+                        </li>
+                        <li>
+                            <h2 className="text-white text-xl">Contact Us</h2>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </>
     );
 }
