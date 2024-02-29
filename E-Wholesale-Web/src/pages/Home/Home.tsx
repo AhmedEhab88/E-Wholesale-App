@@ -7,7 +7,7 @@ function Home() {
     ];
     return (
         <div className="ml-10 mr-10 w-[90%]">
-            <h1 className="text-4xl mt-10 font-bold italic text-left text-purple-400">
+            <h1 className="text-4xl mt-10 font-bold italic text-left text-sky-400">
                 Welcome [User]!
             </h1>
             <h3 className="text-xl mt-10">

@@ -35,7 +35,7 @@ function Layout() {
                     </ul>
                 </div>
                 <div>
-                    <button className="flex items-center bg-purple-500 text-white px-4 py-2 rounded-full hover:bg-purple-400">
+                    <button className="flex items-center bg-sky-500 text-white px-4 py-2 rounded-full hover:bg-sky-400">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -59,17 +59,17 @@ function Layout() {
                 <Outlet />
             </div>
 
-            <footer className="w-full h-[15%] bg-purple-500 fixed left-0 bottom-0 ">
+            <footer className="w-full h-[15%] bg-sky-400 fixed left-0 bottom-0 ">
                 <div className="flex items-center justify-center h-full">
-                    <ul className="flex gap-[4vw]">
+                    <ul className="flex gap-[2vw]">
                         <li>
-                            <h1 className="text-white text-xl">About</h1>
+                            <h1 className="text-white">About</h1>
                         </li>
                         <li>
-                            <h2 className="text-white text-xl">Careers</h2>
+                            <h2 className="text-white">Careers</h2>
                         </li>
                         <li>
-                            <h2 className="text-white text-xl">Contact Us</h2>
+                            <h2 className="text-white">Contact Us</h2>
                         </li>
                     </ul>
                 </div>

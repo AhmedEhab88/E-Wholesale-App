@@ -7,7 +7,7 @@ interface SummariesProps {
 
 function Summaries({ title, value }: SummariesProps) {
     return (
-        <div className="shadow-xl my-5 border-2 border-purple-300 w-[30%] h-36 rounded-xl flex flex-col items-center gap-3">
+        <div className="shadow-xl my-5 border-2 border-sky-300 w-[30%] h-36 rounded-xl flex flex-col items-center gap-3">
             <TimeOutline
                 color={'#00000'}
                 title={'Time'}
