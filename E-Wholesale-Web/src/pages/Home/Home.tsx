@@ -1,3 +1,4 @@
+import { TimeOutline } from 'react-ionicons';
 import Summaries from '../../components/Summaries/Summaries';
 
 function Home() {
@@ -15,7 +16,16 @@ function Home() {
             </h3>
             <div className="flex flex-row flex-wrap justify-between items-center w-full">
                 {items.map((item) => (
-                    <Summaries title={item.title} value={item.value} />
+                    <Summaries>
+                        <TimeOutline
+                            color={'#00000'}
+                            title={'Time'}
+                            height="50px"
+                            width="50px"
+                        />
+                        <p>{item.title}</p>
+                        <p>{item.value}</p>
+                    </Summaries>
                 ))}
             </div>
         </div>
