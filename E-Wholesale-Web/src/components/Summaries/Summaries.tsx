@@ -4,7 +4,7 @@ interface SummariesProps {
 
 function Summaries({ children }: SummariesProps) {
     return (
-        <div className="shadow-xl my-5 border-2 border-sky-300 w-[30%] h-36 rounded-xl flex flex-col items-center gap-3">
+        <div className="font-oxanium my-5 w-[30%] bg-[#D8F8F1] h-36 rounded-xl flex flex-col items-center justify-center gap-3">
             {children}
         </div>
     );
