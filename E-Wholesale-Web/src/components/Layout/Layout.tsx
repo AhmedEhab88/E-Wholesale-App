@@ -2,7 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 function Layout() {
     return (
-        <div className="font-oxanium">
+        <div>
             <nav className="flex justify-between items-center w-[80%] mx-auto mt-2">
                 <div>
                     <Link to="/">E-WholeSale</Link>
