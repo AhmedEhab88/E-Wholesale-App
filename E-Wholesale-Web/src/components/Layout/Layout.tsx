@@ -2,8 +2,8 @@ import { Link, Outlet } from 'react-router-dom';
 
 function Layout() {
     return (
-        <>
-            <nav className="flex justify-between items-center w-[80%] mx-auto mt-2 font-oxanium">
+        <div className="font-oxanium">
+            <nav className="flex justify-between items-center w-[80%] mx-auto mt-2">
                 <div>
                     <Link to="/">E-WholeSale</Link>
                 </div>
@@ -37,7 +37,7 @@ function Layout() {
             <div className="w-[80%] mx-auto">
                 <Outlet />
             </div>
-        </>
+        </div>
     );
 }
 
