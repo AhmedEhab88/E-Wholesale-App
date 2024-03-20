@@ -1,4 +1,4 @@
-import { SearchOutline } from 'react-ionicons';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 function Inventory() {
     const data = [
@@ -12,15 +12,7 @@ function Inventory() {
                 <h1 className="text-[40px] text-[#004956]">Inventory</h1>
             </div>
             <div className="flex justify-between items-center mt-10">
-                <div className="bg-[#EAE6E6] w-[40%] h-[30px] rounded-xl flex flex-row gap-2 items-center">
-                    <span className="pl-2">
-                        <SearchOutline />
-                    </span>
-                    <input
-                        placeholder="Search"
-                        className="bg-inherit pl-3 w-[90%] focus:outline-none"
-                    ></input>
-                </div>
+                <SearchBar />
 
                 <button className="bg-[#D8F8F1] p-2 rounded-xl hover:bg-[#004956] hover:text-white">
                     <p className="text-sm px-5">Add Item</p>
