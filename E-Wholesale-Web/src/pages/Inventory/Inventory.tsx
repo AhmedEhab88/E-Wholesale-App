@@ -1,4 +1,4 @@
-import { TimeOutline } from 'react-ionicons';
+import { SearchOutline } from 'react-ionicons';
 
 function Inventory() {
     const data = [
@@ -14,7 +14,7 @@ function Inventory() {
             <div className="flex justify-between items-center mt-10">
                 <div className="bg-[#EAE6E6] w-[40%] h-[30px] rounded-xl flex flex-row gap-2 items-center">
                     <span className="pl-2">
-                        <TimeOutline />
+                        <SearchOutline />
                     </span>
                     <input
                         placeholder="Search"
@@ -29,18 +29,34 @@ function Inventory() {
             <div className="mt-10">
                 <table className="w-full border-[#004956] border-solid border">
                     <tr>
-                        <th>Name</th>
-                        <th>Quanity</th>
-                        <th>Unit Price</th>
-                        <th>Actions</th>
+                        <th className="border border-[#004956] border-solid text-center">
+                            Name
+                        </th>
+                        <th className="border border-[#004956] border-solid text-center">
+                            Quanity
+                        </th>
+                        <th className="border border-[#004956] border-solid text-center">
+                            Unit Price
+                        </th>
+                        <th className="border border-[#004956] border-solid text-center">
+                            Actions
+                        </th>
                     </tr>
                     {data.map((item) => {
                         return (
                             <tr>
-                                <td>{item.Name}</td>
-                                <td>{item.Price}</td>
-                                <td>{item.Quantity}</td>
-                                <td>View, Update, Delete</td>
+                                <td className="border border-[#004956] border-solid text-center">
+                                    {item.Name}
+                                </td>
+                                <td className="border border-[#004956] border-solid text-center">
+                                    {item.Price}
+                                </td>
+                                <td className="border border-[#004956] border-solid text-center">
+                                    {item.Quantity}
+                                </td>
+                                <td className="border border-[#004956] border-solid text-center">
+                                    View, Update, Delete
+                                </td>
                             </tr>
                         );
                     })}
