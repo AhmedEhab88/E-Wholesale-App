@@ -1,4 +1,5 @@
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Button from '../../components/Button/Button';
 
 function Inventory() {
     const data = [
@@ -13,10 +14,9 @@ function Inventory() {
             </div>
             <div className="flex justify-between items-center mt-10">
                 <SearchBar />
-
-                <button className="bg-[#D8F8F1] p-2 rounded-xl hover:bg-[#004956] hover:text-white">
+                <Button>
                     <p className="text-sm px-5">Add Item</p>
-                </button>
+                </Button>
             </div>
             <div className="mt-10">
                 <table className="w-full border-[#004956] border-solid border">
