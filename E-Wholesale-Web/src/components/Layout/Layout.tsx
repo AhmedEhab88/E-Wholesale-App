@@ -34,7 +34,7 @@ function Layout() {
                 </div>
             </nav>
 
-            <div className="w-[80%] mx-auto">
+            <div className="w-[80%] mx-auto mb-10">
                 <Outlet />
             </div>
         </div>
