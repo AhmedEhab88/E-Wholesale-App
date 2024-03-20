@@ -18,6 +18,7 @@ function Inventory() {
                     <p className="text-sm px-5">Add Item</p>
                 </Button>
             </div>
+
             <div className="mt-10">
                 <table className="w-full border-[#004956] border-solid border">
                     <tr>
@@ -41,10 +42,10 @@ function Inventory() {
                                     {item.Name}
                                 </td>
                                 <td className="border border-[#004956] border-solid text-center">
-                                    {item.Price}
+                                    {item.Quantity}
                                 </td>
                                 <td className="border border-[#004956] border-solid text-center">
-                                    {item.Quantity}
+                                    {item.Price}
                                 </td>
                                 <td className="border border-[#004956] border-solid text-center">
                                     View, Update, Delete
