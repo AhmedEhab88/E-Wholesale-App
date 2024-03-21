@@ -23,38 +23,42 @@ function Users() {
 
             <div className="mt-10">
                 <table className="w-full border-[#004956] border-solid border">
-                    <tr>
-                        <th className="border border-[#004956] border-solid text-center">
-                            Id
-                        </th>
-                        <th className="border border-[#004956] border-solid text-center">
-                            Name
-                        </th>
-                        <th className="border border-[#004956] border-solid text-center">
-                            Orders Completed
-                        </th>
-                        <th className="border border-[#004956] border-solid text-center">
-                            Actions
-                        </th>
-                    </tr>
-                    {data.map((item) => {
-                        return (
-                            <tr key={item.Id}>
-                                <td className="border border-[#004956] border-solid text-center">
-                                    {item.Id}
-                                </td>
-                                <td className="border border-[#004956] border-solid text-center">
-                                    {item.Name}
-                                </td>
-                                <td className="border border-[#004956] border-solid text-center">
-                                    {item.OrdersCompleted}
-                                </td>
-                                <td className="border border-[#004956] border-solid text-center">
-                                    View, Update, Delete
-                                </td>
-                            </tr>
-                        );
-                    })}
+                    <thead>
+                        <tr>
+                            <th className="border border-[#004956] border-solid text-center">
+                                Id
+                            </th>
+                            <th className="border border-[#004956] border-solid text-center">
+                                Name
+                            </th>
+                            <th className="border border-[#004956] border-solid text-center">
+                                Orders Completed
+                            </th>
+                            <th className="border border-[#004956] border-solid text-center">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.map((item) => {
+                            return (
+                                <tr key={item.Id}>
+                                    <td className="border border-[#004956] border-solid text-center">
+                                        {item.Id}
+                                    </td>
+                                    <td className="border border-[#004956] border-solid text-center">
+                                        {item.Name}
+                                    </td>
+                                    <td className="border border-[#004956] border-solid text-center">
+                                        {item.OrdersCompleted}
+                                    </td>
+                                    <td className="border border-[#004956] border-solid text-center">
+                                        View, Update, Delete
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
                 </table>
             </div>
         </>
