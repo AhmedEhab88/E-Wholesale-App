@@ -39,7 +39,7 @@ function Users() {
                     </tr>
                     {data.map((item) => {
                         return (
-                            <tr>
+                            <tr key={item.Id}>
                                 <td className="border border-[#004956] border-solid text-center">
                                     {item.Id}
                                 </td>

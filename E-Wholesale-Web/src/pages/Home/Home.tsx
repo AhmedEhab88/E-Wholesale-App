@@ -20,7 +20,7 @@ function Home() {
             </h3>
             <div className="flex flex-row flex-wrap justify-between items-center w-full">
                 {items.map((item) => (
-                    <Summaries>
+                    <Summaries key={item.title}>
                         <TimeOutline
                             color={'#00000'}
                             title={'Time'}

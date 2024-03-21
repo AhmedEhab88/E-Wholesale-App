@@ -37,7 +37,7 @@ function Inventory() {
                     </tr>
                     {data.map((item) => {
                         return (
-                            <tr>
+                            <tr key={item.Name}>
                                 <td className="border border-[#004956] border-solid text-center">
                                     {item.Name}
                                 </td>
