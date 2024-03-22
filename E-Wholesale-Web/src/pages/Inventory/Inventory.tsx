@@ -1,7 +1,12 @@
+import { useState } from 'react';
+
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
+import Modal from '../../components/Modal/Modal';
 
 function Inventory() {
+    const [isOpen, setIsOpen] = useState(false);
+
     const data = [
         { Name: 'Apples, 1KG', Quantity: 10, Price: '$1.05' },
         { Name: 'Bananas, 1KG', Quantity: 15, Price: '$1.50' },
@@ -51,13 +56,25 @@ function Inventory() {
                                         {item.Price}
                                     </td>
                                     <td className="border border-[#004956] border-solid text-center">
-                                        View, Update, Delete
+                                        <span className="hover:cursor-pointer hover:text-[#52a895]">
+                                            View
+                                        </span>
+                                        , Update,
+                                        <span
+                                            className="hover:cursor-pointer hover:text-red-500"
+                                            onClick={() => setIsOpen(true)}
+                                        >
+                                            {' '}
+                                            Delete{' '}
+                                        </span>
                                     </td>
                                 </tr>
                             );
                         })}
                     </tbody>
                 </table>
+
+                {isOpen && <Modal setIsOpen={setIsOpen} />}
             </div>
         </>
     );
