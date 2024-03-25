@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
-import DeleteModal from '../../components/DeleteModal/DeleteModal';
+import Modal from '../../components/Modal/Modal';
 
 function Inventory() {
     const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +74,34 @@ function Inventory() {
                     </tbody>
                 </table>
 
-                {isOpen && <DeleteModal setIsOpen={setIsOpen} />}
+                {isOpen && (
+                    <Modal setIsOpen={setIsOpen}>
+                        <div className="h-12 bg-white overflow-hidden rounded-t-2xl">
+                            <h5 className="m-0 p-[10px] text-[#2c3e50] font-medium text-[18px] text-center">
+                                Dialog
+                            </h5>
+                        </div>
+                        <div className="p-[10px] text-[#2c3e50] text-[14px] text-center">
+                            Are you sure you want to delete the item?
+                        </div>
+                        <div className="absolute bottom-[2px] mb-[10px] w-full">
+                            <div className="flex justify-around items-center">
+                                <button
+                                    className="mt-2.5 cursor-pointer font-medium py-2.5 px-7 rounded-lg text-sm text-white bg-red-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:bg-red-500"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    Delete
+                                </button>
+                                <button
+                                    className="mt-2.5 cursor-pointer font-medium py-2.5 px-7 rounded-lg text-sm text-gray-700 bg-gray-200 transition-all duration-300 hover:bg-gray-300"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </Modal>
+                )}
             </div>
         </>
     );
