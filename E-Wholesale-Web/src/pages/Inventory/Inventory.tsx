@@ -5,12 +5,14 @@ import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
 
 function Inventory() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isViewItemModalOpen, setIsViewItemModalOpen] = useState(false);
+    const [currentOpenItem, setCurrentOpenItem] = useState(-1);
 
     const data = [
-        { Name: 'Apples, 1KG', Quantity: 10, Price: '$1.05' },
-        { Name: 'Bananas, 1KG', Quantity: 15, Price: '$1.50' },
-        { Name: 'Milk, Al Marai', Quantity: 10, Price: '$3.05' },
+        { Id: 0, Name: 'Apples, 1KG', Quantity: 10, Price: '$1.05' },
+        { Id: 1, Name: 'Bananas, 1KG', Quantity: 15, Price: '$1.50' },
+        { Id: 2, Name: 'Milk, Al Marai', Quantity: 10, Price: '$3.05' },
     ];
     return (
         <>
@@ -45,7 +47,7 @@ function Inventory() {
                     <tbody>
                         {data.map((item) => {
                             return (
-                                <tr key={item.Name}>
+                                <tr key={item.Id}>
                                     <td className="border border-[#004956] border-solid text-center">
                                         {item.Name}
                                     </td>
@@ -56,13 +58,21 @@ function Inventory() {
                                         {item.Price}
                                     </td>
                                     <td className="border border-[#004956] border-solid text-center">
-                                        <span className="hover:cursor-pointer hover:text-[#52a895]">
+                                        <span
+                                            className="hover:cursor-pointer hover:text-[#52a895]"
+                                            onClick={() => {
+                                                setIsViewItemModalOpen(true);
+                                                setCurrentOpenItem(item.Id);
+                                            }}
+                                        >
                                             View
                                         </span>
                                         , Update,
                                         <span
                                             className="hover:cursor-pointer hover:text-red-500"
-                                            onClick={() => setIsOpen(true)}
+                                            onClick={() =>
+                                                setIsDeleteModalOpen(true)
+                                            }
                                         >
                                             {' '}
                                             Delete{' '}
@@ -74,8 +84,26 @@ function Inventory() {
                     </tbody>
                 </table>
 
-                {isOpen && (
-                    <Modal setIsOpen={setIsOpen}>
+                {isViewItemModalOpen && (
+                    <Modal setIsOpen={setIsViewItemModalOpen}>
+                        <div className="m-0 p-[10px] text-[#2c3e50] font-bold text-[20  px] text-center">
+                            {
+                                data.find(
+                                    (item) => item.Id === currentOpenItem,
+                                )!.Name
+                            }
+                        </div>
+                        <div className="p-[10px] text-[#2c3e50] text-[16px] text-center">
+                            Price: {data[currentOpenItem].Price}
+                        </div>
+                        <div className="p-[10px] text-[#2c3e50] text-[16px] text-center">
+                            Quantity: {data[currentOpenItem].Quantity}
+                        </div>
+                    </Modal>
+                )}
+
+                {isDeleteModalOpen && (
+                    <Modal setIsOpen={setIsDeleteModalOpen}>
                         <div className="h-12 bg-white overflow-hidden rounded-t-2xl">
                             <h5 className="m-0 p-[10px] text-[#2c3e50] font-medium text-[18px] text-center">
                                 Dialog
@@ -88,13 +116,13 @@ function Inventory() {
                             <div className="flex justify-around items-center">
                                 <button
                                     className="mt-2.5 cursor-pointer font-medium py-2.5 px-7 rounded-lg text-sm text-white bg-red-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:bg-red-500"
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => setIsDeleteModalOpen(false)}
                                 >
                                     Delete
                                 </button>
                                 <button
                                     className="mt-2.5 cursor-pointer font-medium py-2.5 px-7 rounded-lg text-sm text-gray-700 bg-gray-200 transition-all duration-300 hover:bg-gray-300"
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => setIsDeleteModalOpen(false)}
                                 >
                                     Cancel
                                 </button>
