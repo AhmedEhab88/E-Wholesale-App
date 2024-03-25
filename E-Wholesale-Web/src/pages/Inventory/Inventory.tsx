@@ -3,11 +3,14 @@ import { useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
+import { useNavigate } from 'react-router-dom';
 
 function Inventory() {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isViewItemModalOpen, setIsViewItemModalOpen] = useState(false);
     const [currentOpenItem, setCurrentOpenItem] = useState(-1);
+
+    const navigate = useNavigate();
 
     const data = [
         { Id: 0, Name: 'Apples, 1KG', Quantity: 10, Price: '$1.05' },
@@ -21,7 +24,7 @@ function Inventory() {
             </div>
             <div className="flex justify-between items-center mt-10">
                 <SearchBar />
-                <Button>
+                <Button onClick={() => navigate('add')}>
                     <p className="text-sm px-5">Add Item</p>
                 </Button>
             </div>
