@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
-import Modal from '../../components/Modal/Modal';
+import DeleteModal from '../../components/DeleteModal/DeleteModal';
 
 function Inventory() {
     const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +74,7 @@ function Inventory() {
                     </tbody>
                 </table>
 
-                {isOpen && <Modal setIsOpen={setIsOpen} />}
+                {isOpen && <DeleteModal setIsOpen={setIsOpen} />}
             </div>
         </>
     );

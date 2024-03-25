@@ -1,10 +1,10 @@
-import styles from './Modal.module.css';
+import styles from './DeleteModal.module.css';
 
-interface ModalProps {
+interface DeleteModalProps {
     setIsOpen: (isOpen: boolean) => void;
 }
 
-function Modal({ setIsOpen }: ModalProps) {
+function DeleteModal({ setIsOpen }: DeleteModalProps) {
     return (
         <>
             <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -38,4 +38,4 @@ function Modal({ setIsOpen }: ModalProps) {
     );
 }
 
-export default Modal;
+export default DeleteModal;
