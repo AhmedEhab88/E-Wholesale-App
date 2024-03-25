@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function AddItems() {
+function AddItem() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState<number>();
     const [quantity, setQuantity] = useState('');
@@ -64,4 +64,4 @@ function AddItems() {
     );
 }
 
-export default AddItems;
+export default AddItem;
