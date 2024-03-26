@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
-import { useNavigate } from 'react-router-dom';
+import DeleteOption from '../../components/DeleteOption/DeleteOption';
+import ViewOption from '../../components/ViewOption/ViewOption';
 
 function Inventory() {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -61,25 +63,18 @@ function Inventory() {
                                         {item.Price}
                                     </td>
                                     <td className="border border-[#004956] border-solid text-center">
-                                        <span
-                                            className="hover:cursor-pointer hover:text-[#52a895]"
+                                        <ViewOption
                                             onClick={() => {
                                                 setIsViewItemModalOpen(true);
                                                 setCurrentOpenItem(item.Id);
                                             }}
-                                        >
-                                            View
-                                        </span>
-                                        , Update,
-                                        <span
-                                            className="hover:cursor-pointer hover:text-red-500"
-                                            onClick={() =>
-                                                setIsDeleteModalOpen(true)
-                                            }
-                                        >
-                                            {' '}
-                                            Delete{' '}
-                                        </span>
+                                        />
+                                        , Update,{' '}
+                                        <DeleteOption
+                                            onClick={() => {
+                                                setIsDeleteModalOpen(true);
+                                            }}
+                                        />
                                     </td>
                                 </tr>
                             );
