@@ -2,14 +2,17 @@ import { useState } from 'react';
 
 function AddItem() {
     const [name, setName] = useState('');
-    const [price, setPrice] = useState<number>();
-    const [quantity, setQuantity] = useState('');
+    const [price, setPrice] = useState<number>(0);
+    const [quantity, setQuantity] = useState<number>(0);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(
+        console.log(
             `The name you entered was: "${name}", price: $${price}, quantity: ${quantity}`,
         );
+        setName('');
+        setPrice(0);
+        setQuantity(0);
     };
 
     return (
@@ -40,6 +43,7 @@ function AddItem() {
                             className="bg-[#EAE6E6] h-[30px] p-2 rounded-xl flex flex-row gap-2 items-center w-full"
                             type="number"
                             placeholder="Price, e.g. $10"
+                            min={0}
                             value={price}
                             onChange={(e) => setPrice(parseInt(e.target.value))}
                         />
@@ -48,7 +52,8 @@ function AddItem() {
                         <label>Quantity:</label>
                         <input
                             className="bg-[#EAE6E6] h-[30px] p-2 rounded-xl flex flex-row gap-2 items-center w-full"
-                            type="text"
+                            type="number"
+                            min={0}
                             placeholder="Quantity, e.g. 10"
                             value={quantity}
                             onChange={(e) => setQuantity(e.target.value)}
