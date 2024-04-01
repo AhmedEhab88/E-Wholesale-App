@@ -10,7 +10,7 @@ import DeleteOption from '../../components/DeleteOption/DeleteOption';
 function Retailers() {
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const [currentOpenItem, setIsCurrenOpenItem] = useState<number>(-1);
+    const [currentOpenItem, setCurrentOpenItem] = useState<number>(-1);
     const navigate = useNavigate();
 
     const data = [
@@ -81,14 +81,15 @@ function Retailers() {
                                         <ViewOption
                                             onClick={() => {
                                                 setIsViewModalOpen(true);
-                                                setIsCurrenOpenItem(item.Id);
+                                                setCurrentOpenItem(item.Id);
                                             }}
                                         />
                                         , Update,{' '}
                                         <DeleteOption
-                                            onClick={() =>
-                                                setIsDeleteModalOpen(true)
-                                            }
+                                            onClick={() => {
+                                                setIsDeleteModalOpen(true);
+                                                setCurrentOpenItem(item.Id);
+                                            }}
                                         />
                                     </td>
                                 </tr>

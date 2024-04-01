@@ -73,6 +73,7 @@ function Inventory() {
                                         <DeleteOption
                                             onClick={() => {
                                                 setIsDeleteModalOpen(true);
+                                                setCurrentOpenItem(item.Id);
                                             }}
                                         />
                                     </td>
