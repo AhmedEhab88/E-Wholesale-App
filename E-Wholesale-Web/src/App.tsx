@@ -7,6 +7,7 @@ import Users from './pages/Users/Users';
 import Home from './pages/Home/Home';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AddItem from './pages/AddItem/AddItem';
+import AddRetailer from './pages/AddRetailer/AddRetailer';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="inventory" element={<Inventory />} />
                     <Route path="inventory/add" element={<AddItem />} />
                     <Route path="retailers" element={<Retailers />} />
+                    <Route path="retailers/add" element={<AddRetailer />} />
                     <Route path="users" element={<Users />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Route>
