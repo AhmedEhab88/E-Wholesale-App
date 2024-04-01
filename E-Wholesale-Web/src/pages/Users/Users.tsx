@@ -1,7 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+
 import Button from '../../components/Button/Button';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 function Users() {
+    const navigate = useNavigate();
+
     const data = [
         { Id: 1, Name: 'Ahmed', OrdersCompleted: 13 },
         { Id: 2, Name: 'Omar', OrdersCompleted: 25 },
@@ -16,7 +20,7 @@ function Users() {
             </div>
             <div className="flex justify-between items-center mt-10">
                 <SearchBar />
-                <Button>
+                <Button onClick={() => navigate('add')}>
                     <p className="text-sm px-5">Add User</p>
                 </Button>
             </div>
