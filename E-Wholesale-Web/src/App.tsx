@@ -8,6 +8,7 @@ import Home from './pages/Home/Home';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AddItem from './pages/AddItem/AddItem';
 import AddRetailer from './pages/AddRetailer/AddRetailer';
+import AddUser from './pages/AddUser/AddUser';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path="retailers" element={<Retailers />} />
                     <Route path="retailers/add" element={<AddRetailer />} />
                     <Route path="users" element={<Users />} />
+                    <Route path="users/add" element={<AddUser />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Route>
             </Routes>
