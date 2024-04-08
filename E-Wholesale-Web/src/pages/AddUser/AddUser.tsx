@@ -10,7 +10,7 @@ function AddUser() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        console.log('func called');
         if (password.localeCompare(confirmPassword) != 0) {
             alert('Passwords do not match');
             return;
@@ -31,7 +31,6 @@ function AddUser() {
             setPasswordsMatch(false);
         } else {
             setPasswordsMatch(true);
-            console.log('Passwords match ✅');
         }
     };
 
@@ -62,7 +61,7 @@ function AddUser() {
                         <label>Email:</label>
                         <input
                             className="bg-[#EAE6E6] h-[30px] p-2 rounded-xl flex flex-row gap-2 items-center w-full"
-                            type="text"
+                            type="email"
                             placeholder="E.g. test@test.com"
                             value={email}
                             required
@@ -78,7 +77,6 @@ function AddUser() {
                             value={password}
                             required
                             onChange={(e) => {
-                                console.log(e.target.value);
                                 setPassword(e.target.value);
                             }}
                         />
@@ -88,7 +86,7 @@ function AddUser() {
                         <input
                             className="bg-[#EAE6E6] h-[30px] p-2 rounded-xl flex flex-row gap-2 items-center w-full"
                             type="password"
-                            placeholder="Password"
+                            placeholder="Confirm Password"
                             required
                             value={confirmPassword}
                             onChange={(e) => {
@@ -107,7 +105,8 @@ function AddUser() {
                         <input
                             className="bg-[#EAE6E6] h-[30px] p-2 rounded-xl flex flex-row gap-2 items-center w-full"
                             type="text"
-                            placeholder="e.g. 01014417069"
+                            placeholder="11 digit phone number"
+                            pattern="[0-9]{11}"
                             required
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
