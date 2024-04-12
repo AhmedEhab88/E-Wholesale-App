@@ -23,6 +23,7 @@ namespace EWholesale.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ModelBuilderExtensions.Seed(modelBuilder);
         }
     }
 }

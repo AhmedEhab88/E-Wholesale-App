@@ -4,6 +4,7 @@ using EWholesale.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EWholesale.Infrastructure.Migrations
 {
     [DbContext(typeof(EWholesaleDbContext))]
-    partial class EWholesaleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240412210226_AddAdminUserSeeding")]
+    partial class AddAdminUserSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
