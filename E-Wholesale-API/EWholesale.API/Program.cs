@@ -1,6 +1,14 @@
 
+using EWholesale.Application.Services.Implementations;
+using EWholesale.Application.Services.Interfaces;
+using EWholesale.Domain.Repositories;
 using EWholesale.Infrastructure.Persistence;
+using EWholesale.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace EWholesale.API
 {
@@ -17,8 +25,34 @@ namespace EWholesale.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<EWholesaleDbContext>(options => 
+            builder.Services.AddDbContext<EWholesaleDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("EWholesaleDb")));
+
+            builder.Services.AddAuthentication(config =>
+            {
+                config.DefaultScheme = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(config =>
+            {
+                config.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"])),
+
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                };
+            });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("BasicAuthentication", new AuthorizationPolicyBuilder("BasicAuthentication").RequireAuthenticatedUser().Build());
+            });
+
+
+            builder.Services.AddScoped<ILoginService, LoginService>();
+            builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 
             var app = builder.Build();
 
@@ -28,7 +62,7 @@ namespace EWholesale.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
