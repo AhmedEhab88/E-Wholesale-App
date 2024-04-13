@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EWholesale.Application.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace EWholesale.Application.Services.Interfaces
     public interface ILoginService
     {
         Task<string?> Login(string username, string password);
+
+        Task Register(RegisterDto request);
     }
 }
