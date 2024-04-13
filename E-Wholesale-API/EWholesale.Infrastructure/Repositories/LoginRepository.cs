@@ -19,10 +19,17 @@ namespace EWholesale.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<User?> FindUserByUsername(string username)
+        public async Task<User?> GetUserByUsernameAsync(string username)
         {
             var user = await _dbContext.Users.Where(user => user.UserName == username).FirstOrDefaultAsync();
             return user;
+        }
+
+        public async Task SaveRepresentativeAsync(Representative representative)
+        {
+            await _dbContext.Users.AddAsync(representative);
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
