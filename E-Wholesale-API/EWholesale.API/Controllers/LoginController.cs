@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EWholesale.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -17,6 +17,7 @@ namespace EWholesale.API.Controllers
         }
 
         [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var token = await _loginService.Login(model.Username, model.Password);
@@ -28,6 +29,15 @@ namespace EWholesale.API.Controllers
             {
                 return Ok(new { Token = token });
             }
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto model)
+        {
+            await _loginService.Register(model);
+
+            return Ok();
         }
     }
 }
