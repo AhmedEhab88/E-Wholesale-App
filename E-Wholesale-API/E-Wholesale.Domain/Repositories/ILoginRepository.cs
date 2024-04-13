@@ -9,6 +9,7 @@ namespace EWholesale.Domain.Repositories
 {
     public interface ILoginRepository
     {
-        Task<User?> FindUserByUsername(string username);
+        Task<User?> GetUserByUsernameAsync(string username);
+        Task SaveRepresentativeAsync(Representative representative);
     }
 }
