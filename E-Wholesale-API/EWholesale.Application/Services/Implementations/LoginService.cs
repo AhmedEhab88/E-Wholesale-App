@@ -29,7 +29,7 @@ namespace EWholesale.Application.Services.Implementations
 
         public async Task<string?> Login(string username, string password)
         {
-            var user = await _loginRepository.FindUserByUsername(username);
+            var user = await _loginRepository.GetUserByUsernameAsync(username);
 
             if(user is not null && CheckPassword(user, password)) 
             {
@@ -55,9 +55,27 @@ namespace EWholesale.Application.Services.Implementations
         }
 
 
+        public async Task Register(RegisterDto request)
+        {
+            var newRepresentative = new Representative
+            {
+                Name = request.Name,
+                Email = request.Email,
+                UserName = request.Username,
+                Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                PhoneNumber = request.PhoneNumber,
+                OrdersCompleted = 0
+            };
+
+            await _loginRepository.SaveRepresentativeAsync(newRepresentative);
+        }
+
         private bool CheckPassword(User user, string password)
         {
             return BCrypt.Net.BCrypt.Verify(password, user.Password);
         }
+
+
+
     }
 }
