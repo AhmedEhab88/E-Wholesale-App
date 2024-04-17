@@ -1,17 +1,13 @@
-﻿using BCrypt.Net;
-using EWholesale.Application.Models;
+﻿using EWholesale.Application.Models;
 using EWholesale.Application.Services.Interfaces;
 using EWholesale.Domain.Models;
 using EWholesale.Domain.Repositories;
+using EWholesale.Shared.Common;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EWholesale.Application.Services.Implementations
 {
@@ -31,7 +27,7 @@ namespace EWholesale.Application.Services.Implementations
         {
             var user = await _loginRepository.GetUserByUsernameAsync(username);
 
-            if(user is not null && CheckPassword(user, password)) 
+            if (user is not null && CheckPassword(user, password))
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
@@ -59,7 +55,7 @@ namespace EWholesale.Application.Services.Implementations
         {
             bool userNameExists = await _loginRepository.CheckIfUsernameExists(request.Username);
 
-            if(userNameExists)
+            if (userNameExists)
             {
                 return Result.Failure(RegisterErrors.DuplicateUser);
             }
@@ -75,11 +71,11 @@ namespace EWholesale.Application.Services.Implementations
                     OrdersCompleted = 0
                 };
                 await _loginRepository.SaveRepresentativeAsync(newRepresentative);
-                
+
                 return Result.Success();
             }
 
-            
+
         }
 
         private bool CheckPassword(User user, string password)
