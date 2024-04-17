@@ -28,6 +28,8 @@ namespace EWholesale.API
             builder.Services.AddDbContext<EWholesaleDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("EWholesaleDb")));
 
+            builder.Services.AddAutoMapper(typeof(EWholesale.Application.AutoMapper).Assembly);
+
             builder.Services.AddAuthentication(config =>
             {
                 config.DefaultScheme = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme;
@@ -53,6 +55,9 @@ namespace EWholesale.API
 
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+            builder.Services.AddScoped<IRepresentativeService, RepresentativeService>();
+            builder.Services.AddScoped<IRepresentativeRepository, RepresentativeRepository>();
+
 
             var app = builder.Build();
 
