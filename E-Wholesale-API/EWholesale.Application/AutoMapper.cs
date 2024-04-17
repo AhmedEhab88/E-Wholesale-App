@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EWholesale.Application.Models;
 using EWholesale.Domain.Models;
+using EWholesale.Shared.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace EWholesale.Application
         public AutoMapper() { 
         
             CreateMap<Representative, RepresentativeDto>();
+            CreateMap<InquiryResult<Representative>, InquiryResult<RepresentativeDto>>();
         }
     }
 }
