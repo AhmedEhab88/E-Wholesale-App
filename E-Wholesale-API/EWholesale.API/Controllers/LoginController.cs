@@ -35,9 +35,15 @@ namespace EWholesale.API.Controllers
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
-            await _loginService.Register(model);
+            var result = await _loginService.Register(model);
 
-            return Ok();
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            return Ok("User has been created!");
+
         }
     }
 }
