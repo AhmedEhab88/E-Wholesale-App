@@ -33,7 +33,8 @@ namespace EWholesale.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRepresentatives()
         {
-            return Ok();
+            var result = await _representativeService.GetRepresentatives();
+            return Ok(result);
         }
 
         [HttpPatch]
