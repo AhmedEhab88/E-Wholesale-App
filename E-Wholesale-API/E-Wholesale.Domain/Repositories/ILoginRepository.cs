@@ -11,5 +11,6 @@ namespace EWholesale.Domain.Repositories
     {
         Task<User?> GetUserByUsernameAsync(string username);
         Task SaveRepresentativeAsync(Representative representative);
+        Task<bool> CheckIfUsernameExists(string username);
     }
 }
