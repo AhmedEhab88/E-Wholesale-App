@@ -11,6 +11,6 @@ namespace EWholesale.Application.Services.Interfaces
     {
         Task<string?> Login(string username, string password);
 
-        Task Register(RegisterDto request);
+        Task<Result> Register(RegisterDto request);
     }
 }

@@ -55,19 +55,31 @@ namespace EWholesale.Application.Services.Implementations
         }
 
 
-        public async Task Register(RegisterDto request)
+        public async Task<Result> Register(RegisterDto request)
         {
-            var newRepresentative = new Representative
-            {
-                Name = request.Name,
-                Email = request.Email,
-                UserName = request.Username,
-                Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
-                PhoneNumber = request.PhoneNumber,
-                OrdersCompleted = 0
-            };
+            bool userNameExists = await _loginRepository.CheckIfUsernameExists(request.Username);
 
-            await _loginRepository.SaveRepresentativeAsync(newRepresentative);
+            if(userNameExists)
+            {
+                return Result.Failure(RegisterErrors.DuplicateUser);
+            }
+            else
+            {
+                var newRepresentative = new Representative
+                {
+                    Name = request.Name,
+                    Email = request.Email,
+                    UserName = request.Username,
+                    Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                    PhoneNumber = request.PhoneNumber,
+                    OrdersCompleted = 0
+                };
+                await _loginRepository.SaveRepresentativeAsync(newRepresentative);
+                
+                return Result.Success();
+            }
+
+            
         }
 
         private bool CheckPassword(User user, string password)
