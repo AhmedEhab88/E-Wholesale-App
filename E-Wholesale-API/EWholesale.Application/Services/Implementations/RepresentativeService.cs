@@ -2,6 +2,7 @@
 using EWholesale.Application.Models;
 using EWholesale.Application.Services.Interfaces;
 using EWholesale.Domain.Repositories;
+using EWholesale.Shared.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,14 @@ namespace EWholesale.Application.Services.Implementations
             }
 
             return null;
+        }
+
+        public async Task<InquiryResult<RepresentativeDto>> GetRepresentatives()
+        {
+            var representatives = await _representativeRepository.GetAllRepresentativesAsync();
+            var result = _mapper.Map<InquiryResult<RepresentativeDto>>(representatives);
+
+            return result;
         }
     }
 }

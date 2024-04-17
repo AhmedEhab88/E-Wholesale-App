@@ -1,14 +1,12 @@
 ﻿using EWholesale.Application.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EWholesale.Shared.Common;
 
 namespace EWholesale.Application.Services.Interfaces
 {
     public interface IRepresentativeService
     {
         Task<RepresentativeDto?> GetRepresentativeById(long Id);
+
+        Task<InquiryResult<RepresentativeDto>> GetRepresentatives();
     }
 }
