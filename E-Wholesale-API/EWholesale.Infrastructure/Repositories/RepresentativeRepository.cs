@@ -1,12 +1,8 @@
 ﻿using EWholesale.Domain.Models;
 using EWholesale.Domain.Repositories;
 using EWholesale.Infrastructure.Persistence;
+using EWholesale.Shared.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EWholesale.Infrastructure.Repositories
 {
@@ -17,6 +13,15 @@ namespace EWholesale.Infrastructure.Repositories
         {
             _dbContext = dbContext;
         }
+
+        public async Task<InquiryResult<Representative>> GetAllRepresentativesAsync()
+        {
+            var result = await _dbContext.Representatives.ToListAsync();
+            int count = result.Count();
+
+            return new InquiryResult<Representative>(result, count);
+        }
+
         public async Task<Representative?> GetRepresentativeByIdAsync(long Id)
         {
             return await _dbContext.Representatives.Where(rep => rep.Id == Id).FirstOrDefaultAsync();
