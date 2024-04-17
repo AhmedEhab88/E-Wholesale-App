@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWholesale.Domain", "E-Wholesale.Domain\EWholesale.Domain.csproj", "{2B8C7E6A-1086-4C97-972D-949F8104CB1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EWholesale.Domain", "E-Wholesale.Domain\EWholesale.Domain.csproj", "{2B8C7E6A-1086-4C97-972D-949F8104CB1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWholesale.Application", "EWholesale.Application\EWholesale.Application.csproj", "{7BF308E4-2EAF-42F9-84B9-91DBEBF54A5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EWholesale.Application", "EWholesale.Application\EWholesale.Application.csproj", "{7BF308E4-2EAF-42F9-84B9-91DBEBF54A5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWholesale.Infrastructure", "EWholesale.Infrastructure\EWholesale.Infrastructure.csproj", "{634E6912-745C-4ED4-A511-094EEA6CE4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EWholesale.Infrastructure", "EWholesale.Infrastructure\EWholesale.Infrastructure.csproj", "{634E6912-745C-4ED4-A511-094EEA6CE4D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWholesale.API", "EWholesale.API\EWholesale.API.csproj", "{4524BFE1-1BD6-40F2-9483-2E159BB909B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EWholesale.API", "EWholesale.API\EWholesale.API.csproj", "{4524BFE1-1BD6-40F2-9483-2E159BB909B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWholesale.Shared", "EWholesale.Shared\EWholesale.Shared.csproj", "{C8FBE4C3-9E31-4ACE-BA8C-AA309EC94FC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4524BFE1-1BD6-40F2-9483-2E159BB909B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4524BFE1-1BD6-40F2-9483-2E159BB909B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4524BFE1-1BD6-40F2-9483-2E159BB909B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8FBE4C3-9E31-4ACE-BA8C-AA309EC94FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FBE4C3-9E31-4ACE-BA8C-AA309EC94FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FBE4C3-9E31-4ACE-BA8C-AA309EC94FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FBE4C3-9E31-4ACE-BA8C-AA309EC94FC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
