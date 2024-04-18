@@ -26,5 +26,12 @@ namespace EWholesale.Infrastructure.Repositories
         {
             return await _dbContext.Representatives.Where(rep => rep.Id == Id).FirstOrDefaultAsync();
         }
+
+        public async Task UpdateRepresentative(Representative representative)
+        {
+            _dbContext.Representatives.Update(representative);
+
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

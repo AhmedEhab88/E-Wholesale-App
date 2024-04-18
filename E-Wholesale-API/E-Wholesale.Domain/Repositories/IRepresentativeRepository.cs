@@ -13,5 +13,7 @@ namespace EWholesale.Domain.Repositories
         Task<Representative?> GetRepresentativeByIdAsync(long Id);
 
         Task<InquiryResult<Representative>> GetAllRepresentativesAsync();
+
+        Task UpdateRepresentative(Representative representative);
     }
 }
