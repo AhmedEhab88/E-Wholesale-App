@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BCrypt.Net;
 using EWholesale.Application.Models;
 using EWholesale.Application.Services.Interfaces;
 using EWholesale.Domain.Repositories;
@@ -14,11 +15,13 @@ namespace EWholesale.Application.Services.Implementations
     public class RepresentativeService : IRepresentativeService
     {
         private readonly IRepresentativeRepository _representativeRepository;
+        private readonly ILoginRepository _loginRepository;
         private readonly IMapper _mapper;
         
-        public RepresentativeService(IRepresentativeRepository representativeRepository, IMapper mapper)
+        public RepresentativeService(IRepresentativeRepository representativeRepository, IMapper mapper, ILoginRepository loginRepository)
         {
             _representativeRepository = representativeRepository;
+            _loginRepository = loginRepository;
             _mapper = mapper;
         }
 
@@ -40,6 +43,29 @@ namespace EWholesale.Application.Services.Implementations
             var result = _mapper.Map<InquiryResult<RepresentativeDto>>(representatives);
 
             return result;
+        }
+
+        public async Task<Result> UpdateRepresentative(long Id, UpdateRepresentativeDto model)
+        {
+            var representativeToUpdate = await _representativeRepository.GetRepresentativeByIdAsync(Id);
+
+            if (representativeToUpdate == null)
+            {
+                return Result.Failure(UpdateErrors.UpdateUserNotFound);
+            }
+
+            bool isNewUsernameTaken = await _loginRepository.CheckIfUsernameExists(model.Username, representativeToUpdate.Id);
+
+            if (isNewUsernameTaken)
+            {
+                return Result.Failure(RegisterErrors.DuplicateUser);
+            }
+
+            representativeToUpdate.UpdateRepresentative(model.Username, BCrypt.Net.BCrypt.HashPassword(model.Password), model.Email, model.PhoneNumber, model.Name, model.OrdersCompleted);
+
+            await _representativeRepository.UpdateRepresentative(representativeToUpdate);
+            
+            return Result.Success();
         }
     }
 }

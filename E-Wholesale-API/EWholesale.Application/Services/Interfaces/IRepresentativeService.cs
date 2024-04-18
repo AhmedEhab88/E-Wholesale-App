@@ -8,5 +8,7 @@ namespace EWholesale.Application.Services.Interfaces
         Task<RepresentativeDto?> GetRepresentativeById(long Id);
 
         Task<InquiryResult<RepresentativeDto>> GetRepresentatives();
+
+        Task<Result> UpdateRepresentative(long Id, UpdateRepresentativeDto model);
     }
 }
