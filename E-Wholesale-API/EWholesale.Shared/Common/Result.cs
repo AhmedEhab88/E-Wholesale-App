@@ -16,12 +16,12 @@ namespace EWholesale.Shared.Common
                 throw new ArgumentException("Invalid error", nameof(error));
             }
 
-            IsSucess = isSuccess;
+            IsSuccess = isSuccess;
             Error = error;
         }
 
-        public bool IsSucess { get; }
-        public bool IsFailure => !IsSucess;
+        public bool IsSuccess { get; }
+        public bool IsFailure => !IsSuccess;
 
         public Error Error { get; }
 
@@ -46,5 +46,10 @@ namespace EWholesale.Shared.Common
     public static class RegisterErrors
     {
         public static readonly Error DuplicateUser = new Error("Register.DuplicateUser", "Username is already taken");
+    }
+
+    public static class UpdateErrors
+    {
+        public static readonly Error UpdateUserNotFound = new Error("Update.UserNotFound", "User you are trying to update is not found.");
     }
 }
