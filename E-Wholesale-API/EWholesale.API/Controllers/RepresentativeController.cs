@@ -37,11 +37,18 @@ namespace EWholesale.API.Controllers
             return Ok(result);
         }
 
-        [HttpPatch]
+        [HttpPut]
         [Route("{Id}")]
-        public async Task<IActionResult> UpdateRepresentative(long Id)
+        public async Task<IActionResult> UpdateRepresentative(long Id, [FromBody] UpdateRepresentativeDto model)
         {
-            return Ok();
+            var result = await _representativeService.UpdateRepresentative(Id, model);
+
+            if(result.IsFailure)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok($"User with ID: {Id} has been updated successfully");
         }
 
         [HttpDelete]
