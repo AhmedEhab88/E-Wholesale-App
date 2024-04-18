@@ -32,9 +32,16 @@ namespace EWholesale.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<bool> CheckIfUsernameExists(string username)
+        public async Task<bool> CheckIfUsernameExists(string username, long? Id = null)
         {
-            return await _dbContext.Users.Where(user => user.UserName == username).AnyAsync();
+            var query = _dbContext.Set<User>().Where(user => user.UserName == username);
+
+            if (Id is not null)
+            {
+                query = query.Where(user => user.Id != Id);
+            }
+
+            return await query.AnyAsync();
         }
     }
 }
