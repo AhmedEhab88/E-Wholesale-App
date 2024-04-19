@@ -14,8 +14,11 @@ namespace EWholesale.Application
     {
         public AutoMapper() { 
         
-            CreateMap<Representative, RepresentativeDto>();
-            CreateMap<InquiryResult<Representative>, InquiryResult<RepresentativeDto>>();
+            CreateMap<Representative, RepresentativeDto>()
+                .ForPath(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForPath(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber)).ReverseMap();
+
+            CreateMap<InquiryResult<Representative>, InquiryResult<RepresentativeDto>>().ReverseMap();
         }
     }
 }
