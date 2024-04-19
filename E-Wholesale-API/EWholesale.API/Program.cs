@@ -25,6 +25,17 @@ namespace EWholesale.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:5173")
+                                            .AllowAnyOrigin()   
+                                            .AllowAnyMethod();
+                    });
+            });
+
             builder.Services.AddDbContext<EWholesaleDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("EWholesaleDb")));
 
@@ -67,8 +78,14 @@ namespace EWholesale.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseRouting();
+            
+            app.UseCors();
+            
+            
             app.UseAuthentication();
             app.UseAuthorization();
+
 
 
             app.MapControllers();
