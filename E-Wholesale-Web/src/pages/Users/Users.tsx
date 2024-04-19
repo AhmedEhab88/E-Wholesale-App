@@ -1,49 +1,37 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import Button from '../../components/Button/Button';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import ViewOption from '../../components/ViewOption/ViewOption';
-import { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 import DeleteOption from '../../components/DeleteOption/DeleteOption';
+
+type Representative = {
+    id: number;
+    name: string;
+    ordersCompleted: boolean;
+    email: string;
+    phoneNumber: string;
+};
 
 function Users() {
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
     const [currentOpenItem, setCurrentOpenItem] = useState(-1);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [representatives, setRepresentatives] = useState<
+        Array<Representative>
+    >([]);
+
+    useEffect(() => {
+        fetch('http://localhost:39051/api/representative')
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => setRepresentatives(data.list));
+    }, []);
 
     const navigate = useNavigate();
-
-    const data = [
-        {
-            Id: 1,
-            Name: 'Ahmed',
-            OrdersCompleted: 13,
-            Email: 'ahmed@gmail.com',
-            PhoneNumber: '01014417069',
-        },
-        {
-            Id: 2,
-            Name: 'Omar',
-            OrdersCompleted: 25,
-            Email: 'omar@gmail.com',
-            PhoneNumber: '01014417069',
-        },
-        {
-            Id: 3,
-            Name: 'Mahmoud',
-            OrdersCompleted: 20,
-            Email: 'mahmoud@gmail.com',
-            PhoneNumber: '01014417069',
-        },
-        {
-            Id: 4,
-            Name: 'Khalid',
-            OrdersCompleted: 37,
-            Email: 'khalid@gmail.com',
-            PhoneNumber: '01014417069',
-        },
-    ];
 
     return (
         <>
@@ -58,82 +46,99 @@ function Users() {
             </div>
 
             <div className="mt-10">
-                <table className="w-full border-[#004956] border-solid border">
-                    <thead>
-                        <tr>
-                            <th className="border border-[#004956] border-solid text-center">
-                                Id
-                            </th>
-                            <th className="border border-[#004956] border-solid text-center">
-                                Name
-                            </th>
-                            <th className="border border-[#004956] border-solid text-center">
-                                Orders Completed
-                            </th>
-                            <th className="border border-[#004956] border-solid text-center">
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((item) => {
-                            return (
-                                <tr key={item.Id}>
-                                    <td className="border border-[#004956] border-solid text-center">
-                                        {item.Id}
-                                    </td>
-                                    <td className="border border-[#004956] border-solid text-center">
-                                        {item.Name}
-                                    </td>
-                                    <td className="border border-[#004956] border-solid text-center">
-                                        {item.OrdersCompleted}
-                                    </td>
-                                    <td className="border border-[#004956] border-solid text-center">
-                                        <ViewOption
-                                            onClick={() => {
-                                                setIsViewModalOpen(true);
-                                                setCurrentOpenItem(item.Id);
-                                            }}
-                                        />
-                                        , Update,
-                                        <DeleteOption
-                                            onClick={() => {
-                                                setIsDeleteModalOpen(true);
-                                                setCurrentOpenItem(item.Id);
-                                            }}
-                                        />
-                                    </td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                {representatives.length > 0 ? (
+                    <table className="w-full border-[#004956] border-solid border">
+                        <thead>
+                            <tr>
+                                <th className="border border-[#004956] border-solid text-center">
+                                    Id
+                                </th>
+                                <th className="border border-[#004956] border-solid text-center">
+                                    Name
+                                </th>
+                                <th className="border border-[#004956] border-solid text-center">
+                                    Orders Completed
+                                </th>
+                                <th className="border border-[#004956] border-solid text-center">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {representatives.map((representative) => {
+                                return (
+                                    <tr key={representative.id}>
+                                        <td className="border border-[#004956] border-solid text-center">
+                                            {representative.id}
+                                        </td>
+                                        <td className="border border-[#004956] border-solid text-center">
+                                            {representative.name}
+                                        </td>
+                                        <td className="border border-[#004956] border-solid text-center">
+                                            {representative.ordersCompleted}
+                                        </td>
+                                        <td className="border border-[#004956] border-solid text-center">
+                                            <ViewOption
+                                                onClick={() => {
+                                                    setIsViewModalOpen(true);
+                                                    setCurrentOpenItem(
+                                                        representative.id,
+                                                    );
+                                                }}
+                                            />
+                                            , Update,
+                                            <DeleteOption
+                                                onClick={() => {
+                                                    setIsDeleteModalOpen(true);
+                                                    setCurrentOpenItem(
+                                                        representative.id,
+                                                    );
+                                                }}
+                                            />
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p className="flex justify-center items-center text-red-500">
+                        There are currently no Representatives.
+                    </p>
+                )}
             </div>
 
             {isViewModalOpen && (
                 <Modal setIsOpen={setIsViewModalOpen}>
                     <div className="m-0 p-[10px] text-[#2c3e50] font-bold text-[20  px] text-center">
-                        {data.find((item) => item.Id === currentOpenItem)!.Name}
+                        {
+                            representatives.find(
+                                (item) => item.id === currentOpenItem,
+                            )!.name
+                        }
                     </div>
-                    <div className="p-[10px] text-[#2c3e50] text-[16px] text-center">
+                    <div className="p-[10px] text-[#2c3e50] te/xt-[16px] text-center">
                         Orders Completed:{' '}
                         {
-                            data.find((item) => item.Id === currentOpenItem)!
-                                .OrdersCompleted
+                            representatives.find(
+                                (item) => item.id === currentOpenItem,
+                            )!.ordersCompleted
                         }
                     </div>
                     <div className="p-[10px] text-[#2c3e50] text-[16px] text-center">
                         Email:{' '}
                         {
-                            data.find((item) => item.Id === currentOpenItem)!
-                                .Email
+                            representatives.find(
+                                (item) => item.id === currentOpenItem,
+                            )!.email
                         }
                     </div>
                     <div className="p-[10px] text-[#2c3e50] text-[16px] text-center">
                         Phone Number:{' '}
                         {
-                            data.find((item) => item.Id === currentOpenItem)!
-                                .PhoneNumber
+                            representatives.find(
+                                (item) => item.id === currentOpenItem,
+                            )!.phoneNumber
                         }
                     </div>
                 </Modal>
