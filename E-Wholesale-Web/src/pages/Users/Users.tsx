@@ -32,6 +32,10 @@ function Users() {
             .then((data) => {
                 setRepresentatives(data.list);
                 setIsLoading(false);
+            })
+            .catch((e) => {
+                console.log('Exception occured');
+                setIsLoading(false);
             });
     }, []);
 
