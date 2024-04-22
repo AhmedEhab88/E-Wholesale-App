@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace EWholesale.API
 {
@@ -27,12 +28,13 @@ namespace EWholesale.API
 
             builder.Services.AddCors(options =>
             {
-                options.AddDefaultPolicy(
+                options.AddPolicy("CorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost:5173")
-                                            .AllowAnyOrigin()   
-                                            .AllowAnyMethod();
+                        builder.WithOrigins("http://localhost:5173")
+                               .AllowAnyMethod()
+                               .AllowAnyHeader()
+                               .AllowCredentials();
                     });
             });
 
@@ -79,10 +81,10 @@ namespace EWholesale.API
                 app.UseSwaggerUI();
             }
             app.UseRouting();
-            
-            app.UseCors();
-            
-            
+
+            app.UseCors("CorsPolicy");
+
+
             app.UseAuthentication();
             app.UseAuthorization();
 
