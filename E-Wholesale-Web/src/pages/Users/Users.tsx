@@ -29,9 +29,11 @@ function Users() {
         'http://localhost:39051/api/representative',
     );
 
-    // if (data != null && data.list != null) {
-    //     setRepresentatives(data!.list);
-    // }
+    useEffect(() => {
+        if (data?.list) {
+            setRepresentatives(data.list);
+        }
+    }, [data]);
 
     const navigate = useNavigate();
 
