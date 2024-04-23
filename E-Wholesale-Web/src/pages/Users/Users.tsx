@@ -17,7 +17,7 @@ type Representative = {
     phoneNumber: string;
 };
 
-function Users() {
+function Representatives() {
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
     const [currentOpenItem, setCurrentOpenItem] = useState(-1);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -72,12 +72,12 @@ function Users() {
     return (
         <>
             <div className="mt-10 flex justify-center">
-                <h1 className="text-[40px] text-[#004956]">Users</h1>
+                <h1 className="text-[40px] text-[#004956]">Representatives</h1>
             </div>
             <div className="flex justify-between items-center mt-10">
                 <SearchBar />
                 <Button onClick={() => navigate('add')}>
-                    <p className="text-sm px-5">Add User</p>
+                    <p className="text-sm px-5">Add Representative</p>
                 </Button>
             </div>
 
@@ -208,4 +208,4 @@ function Users() {
     );
 }
 
-export default Users;
+export default Representatives;

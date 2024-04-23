@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function AddUser() {
+function AddRepresentative() {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -37,7 +37,9 @@ function AddUser() {
     return (
         <>
             <div className="mt-10 flex justify-center">
-                <h1 className="text-[40px] text-[#004956]">Add a User</h1>
+                <h1 className="text-[40px] text-[#004956]">
+                    Add a Representative
+                </h1>
             </div>
 
             <div className="flex flex-col gap-10 items-center w-full mt-10">
@@ -46,12 +48,12 @@ function AddUser() {
                     className="w-1/2 flex justify-center items-center flex-col "
                 >
                     <div className="w-full flex justify-center items-center flex-col">
-                        <label htmlFor="itemName">Name of User:</label>
+                        <label htmlFor="itemName">Name of Reprsentative:</label>
                         <input
                             name="itemName"
                             className="bg-[#EAE6E6] h-[30px] p-2 rounded-xl flex flex-row gap-2 items-center w-full"
                             type="text"
-                            placeholder="Name of user"
+                            placeholder="Name of reprsentative"
                             value={name}
                             required
                             onChange={(e) => setName(e.target.value)}
@@ -122,4 +124,4 @@ function AddUser() {
     );
 }
 
-export default AddUser;
+export default AddRepresentative;

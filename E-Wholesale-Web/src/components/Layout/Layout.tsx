@@ -27,7 +27,7 @@ function Layout() {
                         </li>
                         <li>
                             <Link className="hover:text-gray-400" to="/users">
-                                Users
+                                Representatives
                             </Link>
                         </li>
                     </ul>

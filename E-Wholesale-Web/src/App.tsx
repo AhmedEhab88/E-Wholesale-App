@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Retailers from './pages/Retailers/Retailers';
 import Inventory from './pages/Inventory/Inventory';
-import Users from './pages/Users/Users';
+import Representatives from './pages/Users/Users';
 import Home from './pages/Home/Home';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AddItem from './pages/AddItem/AddItem';
 import AddRetailer from './pages/AddRetailer/AddRetailer';
-import AddUser from './pages/AddUser/AddUser';
+import AddRepresentative from './pages/AddUser/AddUser';
 
 function App() {
     return (
@@ -20,8 +20,8 @@ function App() {
                     <Route path="inventory/add" element={<AddItem />} />
                     <Route path="retailers" element={<Retailers />} />
                     <Route path="retailers/add" element={<AddRetailer />} />
-                    <Route path="users" element={<Users />} />
-                    <Route path="users/add" element={<AddUser />} />
+                    <Route path="users" element={<Representatives />} />
+                    <Route path="users/add" element={<AddRepresentative />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Route>
             </Routes>
