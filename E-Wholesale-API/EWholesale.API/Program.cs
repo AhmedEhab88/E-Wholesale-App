@@ -26,12 +26,14 @@ namespace EWholesale.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            var allowedOrigin = builder.Configuration.GetValue<string>("AllowedOrigin");
+            
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:5173")
+                        builder.WithOrigins(allowedOrigin!)
                                .AllowAnyMethod()
                                .AllowAnyHeader()
                                .AllowCredentials();
